@@ -1,0 +1,23 @@
+[
+    {
+      "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+      "purpose": "freshness"
+    },
+    {
+        "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+        "purpose": "category"
+      },
+      {
+        "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+        "purpose": "trick"
+      },
+      {
+        "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+        "purpose": "domain"
+      },
+      {
+        "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+        "purpose": "entities/events"
+      }
+    
+  ]

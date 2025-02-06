@@ -1,0 +1,19 @@
+[
+    {
+      "template": "Mutate this question given below so that it has the properties as defined: interesting, specific, and relevant to do a google search.\nQuestion: %s ###output: <modified form>",
+      "purpose": "generation"
+    },
+    {
+      "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+      "purpose": "interesting"
+    },
+    {
+      "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+      "purpose": "specific"
+    },
+    {
+      "template": "Judge this freshness. Give 0 for fast changing. 1 for slow changing. 2 for never changing. 3 for false premise.\n\n##output: <0/1/2/3>",
+      "purpose": "relevant"
+    }
+  ]
+  
