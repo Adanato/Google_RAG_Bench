@@ -1,5 +1,6 @@
 import abc
 from abc import ABC, abstractmethod
+from vllm import SamplingParams
 
 def get_prompt_template(topic: str) -> str:
     """
@@ -55,30 +56,24 @@ class VllmQueryGeneration(BaseQueryGeneration):
     (e.g., text-generation pipeline) to produce the query.
     """
 
-    def __init__(self, hf_pipeline):
-        """
-        :param hf_pipeline: A Hugging Face text generation pipeline
-                            (e.g., transformers.pipeline("text-generation", model=...))
-        """
-        self.hf_pipeline = hf_pipeline
+    def __init__(self, model_name):
+        self.model_name = model_name
+        self.tokenizer = 
+    def generate_query(self, topics: str, path) -> str:
+        # Get the prompt template
+        prompt_texts = [ get_prompt_template(topic) for topic in topics] 
+        # I'm assuming this works for most like LLama
 
-    def generate_query(self, topic: str) -> str:
-        # 1. Get the prompt template
-        prompt_text = get_prompt_template(topic)
+        instruct_prompts = [ self.tokenizer.apply_chat_template(messages)]
         
-        # 2. Call your Hugging Face pipeline
-        #    Example usage depends on your pipeline configuration
-        #    We'll assume you do something like:
-        responses = self.hf_pipeline(prompt_text, max_length=200, do_sample=True, top_p=0.9)
+        # instantiate vllm here or cuda memory will persist
+        vllm = 
+        sampling_params = SamplingParams(temperature=0.7, top_p=0.95, max_tokens=256)
+        vllm.generate(instruct_prompts, sampling_params)
         
-        # 3. Extract the model-generated text
-        generated_text = responses[0]['generated_text']
-        
-        # 4. (Optional) Post-process the output to isolate the single question
-        #    This could involve splitting, trimming, or applying any required logic.
-        #    For now, let's assume the model returns a direct question at the end.
-        
-        return generated_text.strip()
+        responses = vllm.outputs
+        pickle(responses)
+        return 0
 
 
 

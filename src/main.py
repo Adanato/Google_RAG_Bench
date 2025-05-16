@@ -17,14 +17,13 @@ def main(args):
     # a random topic 
     # or sentence on a fact
     ds = load_dataset("google-research-datasets/natural_questions", "default")
-    topics = ds["question"].text
+    topics = ds["question"].text[:100]
 
     #Generate candidate examples
     gen = VllmQueryGeneration(model_name=args.model_name)
-    num_samples = 100
     tmp_path = f'{args.tmp_dir}/candidates.pkl'
     # prevent vllm from not dying
-    p = multiprocessing.Process(target=gen.generate, args=(topics,tmp_path,num_samples,))
+    p = multiprocessing.Process(target=gen.generate, args=(topics,tmp_path,))
     p.start()
     p.join()
 
@@ -68,7 +67,7 @@ if __name__ == "__main__":
         default="results",
         help="Path to the output directory where results will be saved."
     )
-    
+
     parser.add_argument(
         "--tmp_dir",
         type=str,
